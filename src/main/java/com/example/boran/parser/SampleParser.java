@@ -12,13 +12,14 @@ import static java.rmi.server.LogStream.log;
 public class SampleParser implements Parser{
 
     public void parse() throws IOException {
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect("https://mig.kz/").get();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         log(doc.title());
+        String USD_course = doc.select("td").eachText().toArray()[2].toString();
     }
 
 }
