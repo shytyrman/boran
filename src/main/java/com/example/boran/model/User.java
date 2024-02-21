@@ -1,4 +1,4 @@
-package com.example.boran.models;
+package com.example.boran.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
