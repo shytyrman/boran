@@ -1,6 +1,9 @@
-package com.example.boran.model;
+package com.example.boran.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "minibutches")
 public class MiniButch {
@@ -9,7 +12,7 @@ public class MiniButch {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
-    @Column(name = "day")
+    @Column(name = "day", nullable = false)
     private Timestamp day;
+
 }

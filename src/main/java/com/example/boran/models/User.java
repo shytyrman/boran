@@ -1,6 +1,9 @@
-package com.example.boran.model;
+package com.example.boran.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -11,14 +14,12 @@ public class User {
 
     @NotBlank(message = "Enter login!")
     @NotNull(message = "login can't be empty!")
-    @Column(nullable = false, unique = true)
-    @Column(name = "login")
+    @Column(name = "login", nullable = false, unique = true)
     private String login;
 
     @NotBlank(message = "Enter password!")
     @NotNull(message = "Password can't be empty!")
-    @Column(nullable = false)
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "fullname")
@@ -26,8 +27,7 @@ public class User {
 
     @NotBlank(message = "Enter phone number!")
     @NotNull(message = "Phone number can't be empty!")
-    @Column(nullable = false, unique = true)
-    @Column(name = "phonenumber")
+    @Column(name = "phonenumber", nullable = false, unique = true)
     private String phonenumber;
 
     @Column(name = "wallet")

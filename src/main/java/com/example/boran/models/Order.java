@@ -1,6 +1,10 @@
-package com.example.boran.model;
+package com.example.boran.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -9,8 +13,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
-    @Column(name = "day")
+    @Column(name = "day", nullable = false)
     private Timestamp time;
 
     @Column(name = "jpid")
