@@ -22,8 +22,10 @@ public class Order {
     @Column(name = "track")
     private String track;
 
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "id")
     @Column(name = "userid")
-    private long userid;
+    private User userId;
 
     @Column(name = "weight")
     private float weight;
@@ -43,6 +45,8 @@ public class Order {
     @Column(name = "status")
     private String status;
 
+    @ManyToOne(targetEntity = MiniButch.class)
+    @JoinColumn(name = "id")
     @Column(name = "minibutchid")
-    private long minibutchid;
+    private MiniButch minibutchid;
 }
