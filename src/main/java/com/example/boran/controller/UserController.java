@@ -17,8 +17,19 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+/*
+    @PostMapping("/users")
+    public ResponseEntity<User> createTutorial(@RequestBody User user) {
+        try {
+            User _user = userRepository
+                    .save(new User(user.getLogin(), user.getDescription(), false));
+            return new ResponseEntity<>(_user, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-    @GetMapping("/tutorials/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
         Optional<User> userData = userRepository.findById(id);
 
@@ -28,4 +39,6 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+ */
 }

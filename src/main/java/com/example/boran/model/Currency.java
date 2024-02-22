@@ -21,4 +21,38 @@ public class Currency {
 
     @Column(name = "usdPrice", nullable = false)
     private BigDecimal dollar;
+
+    public Currency() {
+
+    }
+
+    public Currency(Timestamp day, BigDecimal dollar) {
+        this.id = id;
+        this.day = day;
+        this.dollar = dollar;
+    }
+
+    public void setDollar(BigDecimal dollar) {
+        this.dollar = dollar;
+    }
+
+    public void setDay(Timestamp day) {
+        this.day = day;
+    }
+
+    public BigDecimal getDollar() {
+        return dollar;
+    }
+
+    public Timestamp getDay() {
+        return day;
+    }
+
+    public long getId() {
+        return id;
+    }
+    @Override
+    public String toString() {
+        return "Currency [day=" + day + ", dollar=" + dollar + "]";
+    }
 }

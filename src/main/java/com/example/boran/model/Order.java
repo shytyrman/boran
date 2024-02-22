@@ -23,8 +23,7 @@ public class Order {
     private String track;
 
     @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "id")
-    @Column(name = "userid")
+    @JoinColumn(name = "userid")
     private User userId;
 
     @Column(name = "weight")
@@ -46,7 +45,6 @@ public class Order {
     private String status;
 
     @ManyToOne(targetEntity = MiniButch.class)
-    @JoinColumn(name = "id")
-    @Column(name = "minibutchid")
+    @JoinColumn(name = "minibutchidid")
     private MiniButch minibutchid;
 }
