@@ -41,5 +41,36 @@ public class User {
 
     }
 
+    public String getLogin() {
+        return this.login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullName() {
+        return this.fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPhoneNumber() {
+        return this.phonenumber;
+    }
+
+    public void setPhoneNumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
 
 }

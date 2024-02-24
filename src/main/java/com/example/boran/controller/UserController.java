@@ -1,9 +1,12 @@
 package com.example.boran.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.boran.model.Currency;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
 import com.example.boran.repository.UserRepository;
@@ -17,28 +20,35 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
-/*
-    @PostMapping("/users")
-    public ResponseEntity<User> createTutorial(@RequestBody User user) {
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @PostMapping("/registration")
+    public ResponseEntity<String> saveUser(@ModelAttribute("user") User user) {
+        Optional<User> findUser = userRepository.findUserByPhonenumber(user.getPhoneNumber());
+        if (findUser.isPresent()) {
+            return new ResponseEntity<String>("User with this phone number exist", HttpStatus.BAD_REQUEST);
+        }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return new ResponseEntity<String>("Succesfully registered", HttpStatus.OK);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
         try {
-            User _user = userRepository
-                    .save(new User(user.getLogin(), user.getDescription(), false));
-            return new ResponseEntity<>(_user, HttpStatus.CREATED);
+            List<User> users = new ArrayList<User>();
+            userRepository.findAll().forEach(users::add);
+
+            if (users.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(users, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
-        Optional<User> userData = userRepository.findById(id);
-
-        if (userData.isPresent()) {
-            return new ResponseEntity<>(userData.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
- */
 }
