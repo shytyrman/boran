@@ -40,4 +40,14 @@ public class CurrencyController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/add_currency")
+    public ResponseEntity<Currency> addCurrency(@RequestBody Currency currency) {
+        try {
+            Currency _currency = currencyRepository.save(new Currency(currency.getDay(), currency.getDollar()));
+            return new ResponseEntity<>(_currency, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

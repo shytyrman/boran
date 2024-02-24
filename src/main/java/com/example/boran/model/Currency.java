@@ -1,9 +1,6 @@
 package com.example.boran.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -13,6 +10,7 @@ import java.sql.Timestamp;
 public class Currency {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "day", nullable = false)
@@ -27,7 +25,6 @@ public class Currency {
     }
 
     public Currency(Timestamp day, BigDecimal dollar) {
-        this.id = id;
         this.day = day;
         this.dollar = dollar;
     }
