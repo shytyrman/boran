@@ -25,13 +25,15 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     @PostMapping("/registration")
-    public ResponseEntity<String> saveUser(@ModelAttribute("user") User user) {
-        Optional<User> findUser = userRepository.findUserByPhonenumber(user.getPhoneNumber());
+    public ResponseEntity<String> saveUser(@RequestBody User user) {
+        System.out.println("Phone number: " + user.getPhoneNumber());
+        Optional<User> findUser = userRepository.findUserByPhoneNumber(user.getPhoneNumber());
+        System.out.println("User: " + findUser);
         if (findUser.isPresent()) {
             return new ResponseEntity<String>("User with this phone number exist", HttpStatus.BAD_REQUEST);
         }
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        System.out.println(user.getPhoneNumber());
         userRepository.save(user);
         return new ResponseEntity<String>("Succesfully registered", HttpStatus.OK);
     }

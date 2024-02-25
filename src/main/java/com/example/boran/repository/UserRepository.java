@@ -9,5 +9,5 @@ import com.example.boran.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findUserByLogin(String login);
 
-    Optional<User> findUserByPhonenumber(String phonenumber);
+    Optional<User> findUserByPhoneNumber(String phoneNumber);
 }

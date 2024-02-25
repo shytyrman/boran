@@ -27,8 +27,8 @@ public class User {
 
     @NotBlank(message = "Enter phone number!")
     @NotNull(message = "Phone number can't be empty!")
-    @Column(name = "phonenumber", nullable = false, unique = true)
-    private String phonenumber;
+    @Column(name = "phonenumber", unique = true)
+    private String phoneNumber;
 
     @Column(name = "wallet")
     private String wallet;
@@ -38,7 +38,11 @@ public class User {
     }
 
     public User(String login, String password, String fullname, String phonenumber, String wallet) {
-
+        this.login = login;
+        this.password = password;
+        this.fullname = fullname;
+        this.phoneNumber = phonenumber;
+        this.wallet = wallet;
     }
 
     public String getLogin() {
@@ -57,7 +61,7 @@ public class User {
         this.password = password;
     }
 
-    public String getFullName() {
+    public String getFullname() {
         return this.fullname;
     }
 
@@ -66,11 +70,11 @@ public class User {
     }
 
     public String getPhoneNumber() {
-        return this.phonenumber;
+        return this.phoneNumber;
     }
 
-    public void setPhoneNumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 }
