@@ -53,4 +53,20 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    /*
+    @GetMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user) {
+        Optional<User> findUser = userRepository.findUserByLogin(user.getLogin());
+        if (findUser.isPresent()) {
+            User checkedUser = findUser.get();
+            if (passwordEncoder.matches(user.getPassword(), checkedUser.getPassword())) {
+                return ResponseEntity<>
+            } else {
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+    }
+     */
 }

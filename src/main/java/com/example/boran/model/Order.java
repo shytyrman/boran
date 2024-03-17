@@ -1,19 +1,26 @@
 package com.example.boran.model;
 
+import com.example.boran.repository.UserRepository;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Timestamp;
+import java.sql.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name = "orders")
 public class Order {
 
+
+    private String userPhoneNumber;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "day", nullable = false)
+    @Column(name = "time")
     private Timestamp time;
 
     @Column(name = "jpid")
@@ -44,7 +51,55 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    @ManyToOne(targetEntity = MiniButch.class)
-    @JoinColumn(name = "minibutchidid")
-    private MiniButch minibutchid;
+    @Column(name = "day", nullable = false)
+    private Date day;
+
+    public Order() {
+
+    }
+
+    public Order(String track, String jpid, String userPhoneNumber, float weight, Date day) {
+        this.track = track;
+        this.jpid = jpid;
+        this.weight = weight;
+        this.day = day;
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
+    public Order(String track, String jpid, User userId, float weight, Date day, String place) {
+        this.track = track;
+        this.jpid = jpid;
+        this.weight = weight;
+        this.day = day;
+        this.userId = userId;
+        this.place = place;
+    }
+
+    public Date getDay() {
+        return this.day;
+    }
+
+    public String getJPID() {
+        return this.jpid;
+    }
+
+    public String getTrack() {
+        return this.track;
+    }
+
+    public float getWeight() {
+        return this.weight;
+    }
+
+    public String getUserPhoneNumber() {
+        return this.userPhoneNumber;
+    }
+
+    public User getUserId() {
+        return this.userId;
+    }
+
+    public String getPlace() {
+        return this.place;
+    }
 }
