@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <option name="projectDefaultTargetUuid" value="7b66719f-34ba-4eaa-9296-cda378e64ccb" />
+    <targets>
+      <target name="WSL - Ubuntu" type="wsl" uuid="ea5c4abd-dd89-40ab-b6db-ea50a059fcb6">
+        <config>
+          <option name="distributionMsId" value="Ubuntu" />
+          <option name="projectRootOnTarget" value="/mnt/d/Program Files/JetBrains/IntelliJ IDEA 2023.1/jbr/bin&#10;/boran" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="javaVersionString" value="17.0.9" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="&lt;none&gt;:&lt;none&gt;" type="docker" uuid="7b66719f-34ba-4eaa-9296-cda378e64ccb">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="dockerFile" value="Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="homePath" value="/opt/java/openjdk" />
+            <option name="javaVersionString" value="17.0.10" />
+          </config>
+        </ContributedStateBase>
+      </target>
+      <target name="&lt;none&gt;:&lt;none&gt;2" type="docker" uuid="c808b9ca-6e29-4873-8bb7-10d4f0ce0f1c">
+        <config>
+          <option name="targetPlatform">
+            <TargetPlatform />
+          </option>
+          <option name="buildImageConfig">
+            <BuildImageConfig>
+              <option name="builtImageTag" value="&lt;none&gt;:&lt;none&gt;" />
+              <option name="dockerFile" value="Dockerfile" />
+            </BuildImageConfig>
+          </option>
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="agentFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="classpathFolder">
+              <VolumeState>
+                <option name="targetSpecificBits">
+                  <map>
+                    <entry key="mountAsVolume" value="false" />
+                  </map>
+                </option>
+              </VolumeState>
+            </option>
+            <option name="homePath" value="/opt/java/openjdk" />
+            <option name="javaVersionString" value="17.0.10" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
