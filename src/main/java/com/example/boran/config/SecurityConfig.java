@@ -27,7 +27,7 @@ public class SecurityConfig {
             request.requestMatchers("swagger/**").permitAll();
             request.anyRequest().permitAll();
         });
-        //http.formLogin(Customizer.withDefaults());
+        http.formLogin(Customizer.withDefaults());
         return http.build();
     }
 }
