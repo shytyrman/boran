@@ -43,7 +43,7 @@ public class OrderController {
     public ResponseEntity<String> saveOrder(@RequestBody Order order) {
         System.out.println(order.getDay());
         Optional<User> customer = userRepository.findUserByPhoneNumber(order.getUserPhoneNumber());
-        orderRepository.save(new Order(order.getTrack(), order.getJPID(), customer.get(), order.getWeight(), order.getDay(), order.getPlace()));
+        orderRepository.save(new Order(order.getTrack(), order.getJpid(), customer.get(), order.getWeight(), order.getDay(), order.getPlace()));
         //orderRepository.save(order);
         return new ResponseEntity<String>("Succesfully registered", HttpStatus.OK);
     }

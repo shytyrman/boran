@@ -1,11 +1,18 @@
 package com.example.boran.model;
 
+import com.example.boran.authentication.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@EqualsAndHashCode
 public class User {
 
     @Id
@@ -33,6 +40,12 @@ public class User {
     @Column(name = "wallet")
     private String wallet;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
+    private Boolean nonLocked = true;
+    private Boolean enabled = true;
+
     public User() {
 
     }
@@ -44,37 +57,4 @@ public class User {
         this.phoneNumber = phonenumber;
         this.wallet = wallet;
     }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFullname() {
-        return this.fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
 }

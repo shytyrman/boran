@@ -1,16 +1,17 @@
 package com.example.boran.model;
 
-import com.example.boran.repository.UserRepository;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.sql.Date;
-import java.util.Optional;
 
 @Entity
 @Table(name = "orders")
+@Getter
+@Setter
 public class Order {
 
 
@@ -73,33 +74,5 @@ public class Order {
         this.day = day;
         this.userId = userId;
         this.place = place;
-    }
-
-    public Date getDay() {
-        return this.day;
-    }
-
-    public String getJPID() {
-        return this.jpid;
-    }
-
-    public String getTrack() {
-        return this.track;
-    }
-
-    public float getWeight() {
-        return this.weight;
-    }
-
-    public String getUserPhoneNumber() {
-        return this.userPhoneNumber;
-    }
-
-    public User getUserId() {
-        return this.userId;
-    }
-
-    public String getPlace() {
-        return this.place;
     }
 }
