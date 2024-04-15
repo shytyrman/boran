@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.boran.model.Currency;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.*;
 import com.example.boran.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import com.example.boran.model.User;
 @RestController
@@ -53,20 +56,13 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    /*
-    @GetMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User user) {
-        Optional<User> findUser = userRepository.findUserByLogin(user.getLogin());
-        if (findUser.isPresent()) {
-            User checkedUser = findUser.get();
-            if (passwordEncoder.matches(user.getPassword(), checkedUser.getPassword())) {
-                return ResponseEntity<>
-            } else {
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-            }
-        } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+
+    @GetMapping("/current_user")
+    public ResponseEntity<String> fetchUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        System.out.println(username);
+        return new ResponseEntity<>(username, HttpStatus.OK);
     }
-     */
+
 }

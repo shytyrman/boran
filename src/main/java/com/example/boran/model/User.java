@@ -50,11 +50,20 @@ public class User {
 
     }
 
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public User(String login, String password, String fullname, String phonenumber, String wallet) {
         this.login = login;
         this.password = password;
         this.fullname = fullname;
         this.phoneNumber = phonenumber;
         this.wallet = wallet;
+    }
+
+    public User(String phonenumber) {
+        this.phoneNumber = phonenumber;
     }
 }

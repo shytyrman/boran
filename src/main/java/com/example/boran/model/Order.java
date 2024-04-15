@@ -2,19 +2,16 @@ package com.example.boran.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-@Getter
-@Setter
 public class Order {
 
-
+    @Transient
     private String userPhoneNumber;
 
     @Id
@@ -52,27 +49,83 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "day", nullable = false)
-    private Date day;
-
     public Order() {
 
     }
 
-    public Order(String track, String jpid, String userPhoneNumber, float weight, Date day) {
+    public Order(String track, String jpid, String userPhoneNumber, float weight, String place, String status) {
         this.track = track;
         this.jpid = jpid;
         this.weight = weight;
-        this.day = day;
         this.userPhoneNumber = userPhoneNumber;
+        this.boxnum = boxnum;
+        this.place = place;
+        this.status = status;
     }
 
-    public Order(String track, String jpid, User userId, float weight, Date day, String place) {
+    public Order(
+            String track,
+            String jpid,
+            User userId,
+            float weight,
+            String place,
+            int boxnum,
+            Timestamp time,
+            float cost,
+            String status
+    ) {
         this.track = track;
         this.jpid = jpid;
         this.weight = weight;
-        this.day = day;
         this.userId = userId;
         this.place = place;
+        this.boxnum = boxnum;
+        this.time = time;
+        this.cost = cost;
+        this.status = status;
+    }
+
+    public Timestamp getTime() {
+        return this.time;
+    }
+
+    public String getJPID() {
+        return this.jpid;
+    }
+
+    public String getTrack() {
+        return this.track;
+    }
+
+    public float getWeight() {
+        return this.weight;
+    }
+
+    public String getUserPhoneNumber() {
+        return this.userPhoneNumber;
+    }
+
+    public User getUserId() {
+        return this.userId;
+    }
+
+    public String getPlace() {
+        return this.place;
+    }
+
+    public int getBoxnum() {
+        return this.boxnum;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public float getCost() {
+        return this.cost;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
