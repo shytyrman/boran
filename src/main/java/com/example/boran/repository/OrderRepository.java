@@ -9,6 +9,9 @@ import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findAllByUserId(User user);
+    List<Order> findAllByUserIdAndStatus(User user, String status);
+
+    List<Order> findAllByStatus(String status);
     Order findFirstByTrackOrderByTimeDesc(String track);
 
 }

@@ -125,15 +125,41 @@ public class OrderController {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String username = auth.getName();
             User user = order.getUserId();
-            System.out.println("User: " + user.getPhoneNumber());
-            System.out.println("Login: " + username);
-            System.out.println("Role: " + user.getUserRole());
-            System.out.println("Name check: " + username.equals(user.getPhoneNumber()));
-            System.out.println("Role check: " + user.getUserRole().equals("ADMIN"));
             if (username.equals(user.getPhoneNumber()) || user.getUserRole().equals("ADMIN")) {
                 return new ResponseEntity<Order>(order, HttpStatus.OK);
             }
             return new ResponseEntity<Order>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/user_orders_by_status")
+    public ResponseEntity<List<Order>> getUserOrdersByStatus(@RequestParam String phoneNumber, @RequestParam String status) {
+        try {
+            Optional<User> user = userRepository.findUserByPhoneNumber(phoneNumber);
+            List<Order> orders = orderRepository.findAllByUserIdAndStatus(user.get(), status);
+
+            if (orders.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(orders, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/orders_by_status")
+    public ResponseEntity<List<Order>> getAllOrdersByStatus(String status) {
+        try {
+            List<Order> orders = orderRepository.findAllByStatus(status);
+
+            if (orders.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(orders, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
